@@ -1,6 +1,8 @@
 def bresenham(initial_pixel: list, final_pixel: list) -> list:
-
-    m_reflection = (final_pixel[1] - initial_pixel[1]) / (final_pixel[0] - initial_pixel[0])
+    try:
+        m_reflection = (final_pixel[1] - initial_pixel[1]) / (final_pixel[0] - initial_pixel[0])
+    except ZeroDivisionError:
+        m_reflection = 2
 
     swap_x_and_y, swap_x, swap_y = reflection(m_reflection, initial_pixel, final_pixel)
 
