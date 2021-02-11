@@ -6,7 +6,10 @@ def bresenham(initial_pixel: list, final_pixel: list) -> list:
     x = initial_pixel[0]
     y = initial_pixel[1]
 
-    m = (final_pixel[1] - initial_pixel[1]) / (final_pixel[0] - initial_pixel[0])  # TODO: Separar calculo dos deltas
+    delta_x = final_pixel[0] - initial_pixel[0]
+    delta_y =(final_pixel[1] - initial_pixel[1])
+
+    m = delta_y / delta_x
 
     e = m - 0.5
 
@@ -21,7 +24,7 @@ def bresenham(initial_pixel: list, final_pixel: list) -> list:
         x += 1
         e += m
 
-        result_list.append([x, y])  # Desenha o ponto
+        result_list.append([x, y])
 
     if swap_x_and_y or swap_x or swap_y:
         for result in result_list:
