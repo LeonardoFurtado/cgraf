@@ -1,24 +1,7 @@
 def bresenham(initial_pixel: list, final_pixel: list) -> list:
-    swap_x_and_y = False
-    swap_x = False
-    swap_y = False
+    m_reflection = (final_pixel[1] - initial_pixel[1]) / (final_pixel[0] - initial_pixel[0])
 
-    m = (final_pixel[1] - initial_pixel[1]) / (final_pixel[0] - initial_pixel[0])
-
-    if m > 1 or m < -1:
-        initial_pixel[0], initial_pixel[1] = initial_pixel[1], initial_pixel[0]
-        final_pixel[0], final_pixel[1] = final_pixel[1], final_pixel[0]
-        swap_x_and_y = True
-
-    if initial_pixel[0] > final_pixel[0]:
-        initial_pixel[0] = initial_pixel[0] * (-1)
-        final_pixel[0] = final_pixel[0] * (-1)
-        swap_x = True
-
-    if initial_pixel[1] > final_pixel[1]:
-        initial_pixel[1] = initial_pixel[1] * (-1)
-        final_pixel[1] = final_pixel[1] * (-1)
-        swap_y = True
+    swap_x_and_y, swap_x, swap_y = reflection(m_reflection, initial_pixel, final_pixel)
 
     x = initial_pixel[0]
     y = initial_pixel[1]
@@ -53,3 +36,25 @@ def bresenham(initial_pixel: list, final_pixel: list) -> list:
 
     return result_list
 
+
+def reflection(m_reflection, initial_pixel, final_pixel):
+    swap_x_and_y = False
+    swap_x = False
+    swap_y = False
+
+    if m_reflection > 1 or m_reflection < -1:
+        initial_pixel[0], initial_pixel[1] = initial_pixel[1], initial_pixel[0]
+        final_pixel[0], final_pixel[1] = final_pixel[1], final_pixel[0]
+        swap_x_and_y = True
+
+    if initial_pixel[0] > final_pixel[0]:
+        initial_pixel[0] = initial_pixel[0] * (-1)
+        final_pixel[0] = final_pixel[0] * (-1)
+        swap_x = True
+
+    if initial_pixel[1] > final_pixel[1]:
+        initial_pixel[1] = initial_pixel[1] * (-1)
+        final_pixel[1] = final_pixel[1] * (-1)
+        swap_y = True
+
+    return swap_x_and_y, swap_x, swap_y
