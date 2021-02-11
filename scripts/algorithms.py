@@ -35,7 +35,7 @@ def bresenham(initial_pixel: list, final_pixel: list) -> list:
     return result_list
 
 
-def reflection(m_reflection, initial_pixel, final_pixel):
+def reflection(m_reflection: int, initial_pixel: list, final_pixel: list) -> tuple:
     swap_x_and_y = False
     swap_x = False
     swap_y = False
@@ -58,7 +58,7 @@ def reflection(m_reflection, initial_pixel, final_pixel):
     return swap_x_and_y, swap_x, swap_y
 
 
-def reverse_reflection(result_list, swap_x, swap_y, swap_x_and_y):
+def reverse_reflection(result_list: list, swap_x: bool, swap_y: bool, swap_x_and_y: bool) -> list:
     for result in result_list:
         if swap_y is True:
             result[1] = result[1] * (-1)
